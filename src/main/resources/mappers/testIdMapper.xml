@@ -23,4 +23,26 @@
       </if>
     </trim>
   </insert>
+  <resultMap id="BaseResultMap" type="com.mmall.pojo.testId">
+    <constructor>
+      <arg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.mmall.pojo.testId">
+    insert into mmall_id (id)
+    values (#{id,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mmall.pojo.testId">
+    insert into mmall_id
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
 </mapper>
