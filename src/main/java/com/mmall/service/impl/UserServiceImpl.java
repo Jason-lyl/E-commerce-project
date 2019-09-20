@@ -193,6 +193,7 @@ public class UserServiceImpl implements IUserService {
         return ServerResponse.createByErrorMessage("跟新个人信息失败");
 
     }
+    
 
     @Override
     public ServerResponse<User> getInformation(Integer userId) {
@@ -202,5 +203,19 @@ public class UserServiceImpl implements IUserService {
         }
         user.setPassword(StringUtils.EMPTY);
         return ServerResponse.createBySuccess(user);
+    }
+
+    /**
+     * 检验是否是管理员
+     * @param user
+     * @return
+     */
+
+    @Override
+    public ServerResponse checkAdminRole(User user) {
+        if (user != null && user.getRole().intValue() == Const.Role.Role_ADMIN){
+            return ServerResponse.createBySuccess();
+        }
+        return ServerResponse.createByError();
     }
 }
