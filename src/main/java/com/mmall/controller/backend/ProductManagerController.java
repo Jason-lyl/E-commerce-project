@@ -68,6 +68,7 @@ public class ProductManagerController {
         }
         if (iUserService.checkAdminRole(user).isSuccess()){
             //
+            return iProductService.managerPorductDetail(productId);
 
         }else {
             return ServerResponse.createByErrorMessage("无权限操作");
