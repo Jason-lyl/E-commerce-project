@@ -1,6 +1,7 @@
 package com.mmall.service.impl;
 
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.google.common.collect.Lists;
 import com.mmall.common.ResponseCode;
 import com.mmall.common.ServerResponse;
@@ -118,7 +119,7 @@ public class ProductServiceImpl implements IProductService {
 
     }
 
-    public ServerResponse getProductList(int pageNum, int pageSize){
+    public ServerResponse<PageInfo> getProductList(int pageNum, int pageSize){
 
         //填充自己的sql查询逻辑
         //pageHelper-收尾
@@ -128,8 +129,12 @@ public class ProductServiceImpl implements IProductService {
         for (Product productItem :
                 productList) {
             ProductListVo productListVo = assembleProductListVo(productItem);
+            productListVoList.add(productListVo);
         }
-        return null;
+
+        PageInfo pageInfo = new PageInfo(productList);
+        pageInfo.setList(productListVoList);
+        return ServerResponse.createBySuccess(pageInfo);
     }
 
     private ProductListVo assembleProductListVo(Product product){
@@ -143,6 +148,25 @@ public class ProductServiceImpl implements IProductService {
         productListVo.setSubtitle(product.getSubtitle());
         productListVo.setStatus(product.getStatus());
         return productListVo;
+    }
+
+    @Override
+    public ServerResponse<PageInfo> searchProduct(String productName, Integer productId, int pageNum, int pageSize){
+        PageHelper.startPage(pageNum, pageSize);
+        if (StringUtils.isNotBlank(productName)){
+            productName = new StringBuilder().append("%").append(productName).append("%").toString();
+        }
+        List<Product> productList = productMapper.selectByNameAndProductId(productName, productId);
+        List<ProductListVo> productListVoList = Lists.newArrayList();
+        for (Product productItem :
+                productList) {
+            ProductListVo productListVo = assembleProductListVo(productItem);
+            productListVoList.add(productListVo);
+        }
+        PageInfo pageInfo = new PageInfo(productList);
+        pageInfo.setList(productListVoList);
+        return ServerResponse.createBySuccess(pageInfo);
+
     }
 
 
