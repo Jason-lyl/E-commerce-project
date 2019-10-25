@@ -12,7 +12,7 @@ public interface ICategoryService {
 
     ServerResponse<List<Category>> getChildrenParentCategory(Integer categoryId);
 
-    ServerResponse selectCategoryAndChildrenById(Integer categoryId);
+    ServerResponse<List<Integer>> selectCategoryAndChildrenById(Integer categoryId);
 
 
 }

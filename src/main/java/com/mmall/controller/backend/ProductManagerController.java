@@ -10,6 +10,7 @@ import com.mmall.service.IFileService;
 import com.mmall.service.IProductService;
 import com.mmall.service.IUserService;
 import com.mmall.util.PropertiesUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Map;
 
@@ -85,6 +87,15 @@ public class ProductManagerController {
         }
     }
 
+    /**
+     *
+     * @RequestParam 添加这个注解接口要带参数的，否则会报错，也可以使用required=false 默认是ture。defaultValue 带了参数会接受，不带参数会使用默认的。value属性，传参必须是这个餐呢过接收到值
+     * 如果不携带这个这个注解，接口不会报错
+     * @param session
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
     @RequestMapping("list.do")
     @ResponseBody
         public ServerResponse getList(HttpSession session, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
@@ -122,15 +133,72 @@ public class ProductManagerController {
 
     @RequestMapping("upload.do")
     @ResponseBody
-    public ServerResponse upload(MultipartFile file, HttpServletRequest request){
-        String path = request.getSession().getServletContext().getRealPath("upload");
-        String targetFileName = iFileService.upload(file, path);
-        String url = PropertiesUtil.getProperty("ftp.server.http.prefix");
+    public ServerResponse upload(HttpSession session,
+                                 @RequestParam(value = "upload_file", required = false) MultipartFile file,
+                                 HttpServletRequest request){
 
-        Map fileMap = Maps.newHashMap();
-        fileMap.put("uri", targetFileName);
-        fileMap.put("url", url);
-        return ServerResponse.createBySuccess(fileMap);
+        //判断权限，防止用户恶意上传文件
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
+        if (user == null) {
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),"用户未登陆，请登录管理员");
+        }
+        if (iUserService.checkAdminRole(user).isSuccess()){
+
+            String path = request.getSession().getServletContext().getRealPath("upload");
+            String targetFileName = iFileService.upload(file, path);
+            String url = PropertiesUtil.getProperty("ftp.server.http.prefix");
+
+            Map fileMap = Maps.newHashMap();
+            fileMap.put("uri", targetFileName);
+            fileMap.put("url", url);
+            return ServerResponse.createBySuccess(fileMap);
+
+        }else {
+            return ServerResponse.createByErrorMessage("无权限操作");
+        }
+
+    }
+@RequestMapping("richetext_img_upload.do")
+@ResponseBody
+    public Map richtextImgUpload(HttpSession session, @RequestParam(value = "upload_file", required = false) MultipartFile file,
+                                 HttpServletRequest request, HttpServletResponse response){
+        Map resultMap = Maps.newHashMap();
+        User user = (User)session.getAttribute(Const.CURRENT_USER);
+        if (user == null) {
+            resultMap.put("success",false);
+            resultMap.put("msg","请登录管理员");
+            return resultMap;
+        }
+        /**
+         * 富文本中对于返回值有自己的要求，simditor有自己的要求返回格式
+         * https://simditor.tower.im/docs/doc-config.html
+         *
+         * {
+         *   "success": true/false,
+         *   "msg": "error message", # optional
+         *   "file_path": "[real file path]"
+         * }
+         */
+        if (iUserService.checkAdminRole(user).isSuccess()){
+            String path = request.getSession().getServletContext().getRealPath("upload");
+            String targetFileName = iFileService.upload(file, path);
+            if (StringUtils.isBlank(targetFileName)){
+                resultMap.put("success", false);
+                resultMap.put("msg", "上传失败");
+                return resultMap;
+            }
+            String url = PropertiesUtil.getProperty("ftp.server.http.prefix") + targetFileName;
+            resultMap.put("success", true);
+            resultMap.put("msg", "上传成功");
+            resultMap.put("file_path", url);
+            response.addHeader("Access-Control-Allow-Headers","X-File-Name");
+            return resultMap;
+        }else {
+            resultMap.put("success",false);
+            resultMap.put("msg","无权限操作");
+            return resultMap;
+        }
+
     }
 
 }
