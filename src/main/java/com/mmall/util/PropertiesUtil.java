@@ -25,7 +25,7 @@ public class PropertiesUtil {
 
             //load(InputStream inStream) 从输入流中读取属性列表（键和元素对）.同偶对指定的文件（比如说上面的mmall.properties文件）进行装载来获取该文件中的所有键值对。以供getProperty(String key)来搜锁
 
-            properties.load(new InputStreamReader(Objects.requireNonNull(PropertiesUtil.class.getClassLoader().getResourceAsStream(fileName)), "UTF-8"));
+            properties.load(new InputStreamReader(PropertiesUtil.class.getClassLoader().getResourceAsStream(fileName),"UTF-8"));
         }catch (IOException e){
             logger.error("配置文件读取异常", e);
         }

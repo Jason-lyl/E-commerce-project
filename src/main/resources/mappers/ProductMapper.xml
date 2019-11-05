@@ -196,7 +196,6 @@
         and id = #{productId}
       </if>
     </where>
-    where
   </select>
 
 
