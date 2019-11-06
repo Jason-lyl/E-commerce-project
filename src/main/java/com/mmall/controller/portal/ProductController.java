@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.math.BigDecimal;
+
 /**
  * @author jason
  * @2019/10/16
@@ -37,8 +39,9 @@ public class ProductController {
                                          @RequestParam(value = "orderBy", defaultValue = "") String orderBy){
 
         return iProductService.getProductByKeywordCategory(keyword, categoryId, pageNum, pageSize, orderBy);
-
     }
+
+
 
 
 
