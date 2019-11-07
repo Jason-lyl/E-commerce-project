@@ -52,7 +52,7 @@ public class ShappingController {
         return iShippingService.delete(user.getId(), shippingId);
     }
 
-    @RequestMapping("udpate.do")
+    @RequestMapping("update.do")
     @ResponseBody
     public ServerResponse update (HttpSession session, Shipping shipping){
         User user = (User)session.getAttribute(Const.CURRENT_USER);
