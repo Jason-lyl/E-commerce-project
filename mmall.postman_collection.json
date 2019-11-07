@@ -1,0 +1,912 @@
+{
+	"info": {
+		"_postman_id": "407002d9-0f99-4dff-85fc-2dbc66706d3e",
+		"name": "mmall",
+		"description": "mmall",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "manager",
+			"item": [
+				{
+					"name": "product/search.do",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/mmall_war/manage/product/list.do",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"mmall_war",
+								"manage",
+								"product",
+								"list.do"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "product_list.do",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/mmall_war/manage/product/list.do",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"mmall_war",
+								"manage",
+								"product",
+								"list.do"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "product_detail.do",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/mmall_war/manage/product/detail.do?productId=27",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"mmall_war",
+								"manage",
+								"product",
+								"detail.do"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "27"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "product_save.do",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "product/list.do",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "product/detail.do",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/mmall_war/product/list.do?productId=1&keyword=hao&orderBy=price_asc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"mmall_war",
+								"product",
+								"list.do"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "1"
+								},
+								{
+									"key": "keyword",
+									"value": "hao"
+								},
+								{
+									"key": "orderBy",
+									"value": "price_asc"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "cart",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/mmall_war/cart/add.do?count=10&productId=28",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"mmall_war",
+								"cart",
+								"add.do"
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "10"
+								},
+								{
+									"key": "productId",
+									"value": "28"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/mmall_war/cart/list.do",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"mmall_war",
+								"cart",
+								"list.do"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/mmall_war/cart/update.do?productId=26&count=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"mmall_war",
+								"cart",
+								"update.do"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "26"
+								},
+								{
+									"key": "count",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "un_select_all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/mmall_war/cart/delete_product.do?productIds=26",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"mmall_war",
+								"cart",
+								"delete_product.do"
+							],
+							"query": [
+								{
+									"key": "productIds",
+									"value": "26"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "select_all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/mmall_war/cart/select_all.do",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"mmall_war",
+								"cart",
+								"select_all.do"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "select",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/mmall_war/cart/select.do?productId=26",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"mmall_war",
+								"cart",
+								"select.do"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "26"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "un_select",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/mmall_war/cart/un_select.do?productId=26",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"mmall_war",
+								"cart",
+								"un_select.do"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "26"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_cart_product_count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "shipping",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/mmall_war/shipping/add.do?userId=1&receiverName=longge&receiverPhone=23412341234&receiverMobile=32314234&receiverProvince=河南&receiverCity=商丘&receiverDistrict=柘城县&receiverAddress=陆家嘴&receiverZip=370000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"mmall_war",
+								"shipping",
+								"add.do"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "1"
+								},
+								{
+									"key": "receiverName",
+									"value": "longge"
+								},
+								{
+									"key": "receiverPhone",
+									"value": "23412341234"
+								},
+								{
+									"key": "receiverMobile",
+									"value": "32314234"
+								},
+								{
+									"key": "receiverProvince",
+									"value": "河南"
+								},
+								{
+									"key": "receiverCity",
+									"value": "商丘"
+								},
+								{
+									"key": "receiverDistrict",
+									"value": "柘城县"
+								},
+								{
+									"key": "receiverAddress",
+									"value": "陆家嘴"
+								},
+								{
+									"key": "receiverZip",
+									"value": "370000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/mmall_war/shipping/delete.do?shippingId=29",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"mmall_war",
+								"shipping",
+								"delete.do"
+							],
+							"query": [
+								{
+									"key": "shippingId",
+									"value": "29"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/mmall_war/shipping/update.do?userId=1&receiverName=jason01&receiverPhone=23412341234&receiverMobile=32314234&receiverProvince=河南&receiverCity=商丘&receiverDistrict=柘城县&receiverAddress=陆家嘴&receiverZip=370000&id=30",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"mmall_war",
+								"shipping",
+								"update.do"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "1"
+								},
+								{
+									"key": "receiverName",
+									"value": "jason01"
+								},
+								{
+									"key": "receiverPhone",
+									"value": "23412341234"
+								},
+								{
+									"key": "receiverMobile",
+									"value": "32314234"
+								},
+								{
+									"key": "receiverProvince",
+									"value": "河南"
+								},
+								{
+									"key": "receiverCity",
+									"value": "商丘"
+								},
+								{
+									"key": "receiverDistrict",
+									"value": "柘城县"
+								},
+								{
+									"key": "receiverAddress",
+									"value": "陆家嘴"
+								},
+								{
+									"key": "receiverZip",
+									"value": "370000"
+								},
+								{
+									"key": "id",
+									"value": "30"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "select",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/mmall_war/shipping/select.do?shippingId=30",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"mmall_war",
+								"shipping",
+								"select.do"
+							],
+							"query": [
+								{
+									"key": "shippingId",
+									"value": "30"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8088/mmall_war/shipping/select.do?shippingId=30",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"mmall_war",
+								"shipping",
+								"select.do"
+							],
+							"query": [
+								{
+									"key": "shippingId",
+									"value": "30"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "product/list",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "str",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "username",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8088/mmall_war/product/list.do",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"mmall_war",
+						"product",
+						"list.do"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_deep_category",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "categoryId",
+							"value": "100001",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8088/mmall_war/manager/category/get_deep_category.do",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"mmall_war",
+						"manager",
+						"category",
+						"get_deep_category.do"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "jason",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "jason",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "jason@qq.com",
+							"type": "text"
+						},
+						{
+							"key": "question",
+							"value": "can you remember me?",
+							"type": "text"
+						},
+						{
+							"key": "answer",
+							"value": "yes",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8088/mmall_war/user/register.do",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"mmall_war",
+						"user",
+						"register.do"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_user_info",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "str",
+							"value": "admin@happymmall.com",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "email",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8088/mmall_war/user/get_user_info.do",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"mmall_war",
+						"user",
+						"get_user_info.do"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_deep_category",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "categoryId",
+							"value": "100001",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8088/mmall_war/manager/category/get_deep_category.do",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"mmall_war",
+						"manager",
+						"category",
+						"get_deep_category.do"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8088/mmall_war/user/login.do",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"mmall_war",
+						"user",
+						"login.do"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add_category",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "categoryId",
+							"value": "100001",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8088/mmall_war/manager/category/add_category.do?parentId=0&categoryName=新增的家用电器",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"mmall_war",
+						"manager",
+						"category",
+						"add_category.do"
+					],
+					"query": [
+						{
+							"key": "parentId",
+							"value": "0"
+						},
+						{
+							"key": "categoryName",
+							"value": "新增的家用电器"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
